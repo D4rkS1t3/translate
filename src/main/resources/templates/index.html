@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tłumacz tekstu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <h1>Tłumacz tekstu</h1>
+
+    <form action="/translate" method="post">
+        <div class="form-group">
+            <label for="sourceLanguage">Język źródłowy:</label>
+            <select id="sourceLanguage" name="sourceLanguage">
+                <option value="POLISH">Polski</option>
+                <option value="ENGLISH">Angielski</option>
+                <option value="DUTCH">Niemiecki</option>
+                <option value="FRENCH">Francuski</option>
+                <option value="SPANISH">Hiszpański</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="inputText">Tekst do przetłumaczenia:</label>
+            <textarea id="inputText" name="textToTranslate" rows="5"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="targetLanguage">Język docelowy:</label>
+            <select id="targetLanguage" name="targetLanguage">
+                <option value="POLISH">Polski</option>
+                <option value="ENGLISH">Angielski</option>
+                <option value="DUTCH">Niemiecki</option>
+                <option value="FRENCH">Francuski</option>
+                <option value="SPANISH">Hiszpański</option>
+            </select>
+        </div>
+
+        <button id="translateButton" type="submit">Tłumacz</button>
+    </form>
+
+    <div id="translationResult" class="hidden">
+        <h2>Wynik tłumaczenia:</h2>
+        <p id="translatedText"></p>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
