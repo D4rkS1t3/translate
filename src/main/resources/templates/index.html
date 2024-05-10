@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="pl" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +10,7 @@
 <div class="container">
     <h1>Tłumacz tekstu</h1>
 
-    <form action="/translate" method="post">
+    <form action="/translate" method="post" th:object="${translationForm}">
         <div class="form-group">
             <label for="sourceLanguage">Język źródłowy:</label>
             <select id="sourceLanguage" name="sourceLanguage">
@@ -23,11 +23,11 @@
         </div>
         <div class="form-group">
             <label for="inputText">Tekst do przetłumaczenia:</label>
-            <textarea id="inputText" name="textToTranslate" rows="5"></textarea>
+            <textarea id="inputText" name="textToTranslate" style="resize: none;" rows="7" th:field="*{textToTranslate}"></textarea>
         </div>
         <div class="form-group">
             <label for="targetLanguage">Język docelowy:</label>
-            <select id="targetLanguage" name="targetLanguage">
+            <select id="targetLanguage" name="targetLanguage" th:field="*{targetLanguage}">
                 <option value="POLISH">Polski</option>
                 <option value="ENGLISH">Angielski</option>
                 <option value="DUTCH">Niemiecki</option>
@@ -36,15 +36,35 @@
             </select>
         </div>
 
+        <div class="button-container">
         <button id="translateButton" type="submit">Tłumacz</button>
+        </div>
     </form>
 
-    <div id="translationResult" class="hidden">
-        <h2>Wynik tłumaczenia:</h2>
-        <p id="translatedText"></p>
+    <div id="translationResult">
+        <label for="translatedText">Wynik tłumaczenia:</label>
+        <textarea id="translatedText" rows="7"  style="resize: none;"  th:value="${translatedText}" ></textarea>
     </div>
+
 </div>
 
-<script src="script.js"></script>
+
+<script src="./scripts.js"></script>
+<script>function autoResize(textarea) {
+    textarea.style.height = 'auto';
+    textarea.style.height = (textarea.scrollHeight) + 'px';
+}
+
+document.addEventListener('input', function (e) {
+    if (e.target.tagName.toLowerCase() === 'textarea') {
+        autoResize(e.target);
+    }
+});
+
+document.querySelectorAll('textarea').forEach(function (textarea) {
+    autoResize(textarea);
+});
+
+</script>
 </body>
 </html>

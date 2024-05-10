@@ -1,12 +1,24 @@
-body {
-    font-family: sans-serif;
+/* Reset default browser styles */
+* {
+    box-sizing: border-box;
     margin: 0;
-    padding: 20px;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
 }
 
 .container {
-    max-width: 600px;
-    margin: 0 auto;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
@@ -20,30 +32,71 @@ h1 {
 
 label {
     display: block;
-    margin-bottom: 5px;
+    font-weight: bold;
 }
 
-textarea,
-select {
+select, textarea, input[type="text"] {
     width: 100%;
-    padding: 8px;
+    padding: 10px;
+    margin-top: 5px;
     border: 1px solid #ccc;
-    box-sizing: border-box;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.button-container {
+    text-align: center;
 }
 
 button {
-    background-color: #007bff;
-    color: white;
     padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
     border: none;
+    border-radius: 5px;
     cursor: pointer;
+    font-size: 16px;
 }
 
 #translationResult {
     margin-top: 20px;
-    display: none;
 }
 
+
 #translatedText {
-    font-weight: bold;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    resize: vertical; /* Allow vertical resizing */
+    overflow: auto; /* Add scrollbar if needed */
+    white-space: pre-wrap;
+}
+
+
+
+/* Responsive design */
+@media only screen and (max-width: 600px) {
+    #translatedText {
+            font-size: 14px;
+            max-height: 150px; /* Adjust maximum height for smaller screens */
+        }
+
+    .container {
+        padding: 10px;
+    }
+
+    select, textarea, input[type="text"] {
+        font-size: 14px;
+    }
+
+    button {
+        font-size: 14px;
+    }
+    textarea {
+        max-height: 7em;
+        overflow-y: auto;
+        resize: vertical; /* Pozioma zmiana szerokości textarea nie będzie możliwa */
+    }
 }

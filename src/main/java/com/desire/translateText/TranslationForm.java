@@ -4,6 +4,7 @@ public class TranslationForm {
     private String textToTranslate;
     private String sourceLanguage;
     private String targetLanguage;
+    private String translatedText; // Nowe pole
 
     // Konstruktory
     public TranslationForm() {
@@ -39,5 +40,13 @@ public class TranslationForm {
     public void setTargetLanguage(String targetLanguage) {
         this.targetLanguage = targetLanguage;
     }
-}
 
+    // Getter and setter for translatedText
+    public String getTranslatedText() {
+        return translatedText;
+    }
+
+    public void setTranslatedText(String translatedText) {
+        this.translatedText = translatedText;
+    }
+}
